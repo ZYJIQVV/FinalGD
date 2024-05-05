@@ -49,6 +49,12 @@ from gd.nn.modules import (
     Segment,
     Silence,
     WorldDetect,
+    LSKA,
+    PCWA,
+    AID,
+    ChannelAvgPool,
+    ChannelMaxPool,
+    SPPFLSKA,
 )
 from gd.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from gd.utils.checks import check_requirements, check_suffix, check_yaml

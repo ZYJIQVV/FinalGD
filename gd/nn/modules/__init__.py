@@ -46,7 +46,6 @@ from .block import (
     RepNCSPELAN4,
     ResNetLayer,
     Silence,
-    SPPFLSKA,
 )
 from .conv import (
     CBAM,
@@ -76,8 +75,17 @@ from .transformer import (
     TransformerEncoderLayer,
     TransformerLayer,
 )
-from .lska import (LSKA,)
-from .pcwa import (PCWA, AID, ChannelAvgPool, ChannelMaxPool)
+
+from .myblock import (
+    LSKA,
+    PCWA,
+    AID,
+    ChannelAvgPool,
+    ChannelMaxPool,
+    RFCBAMConv,
+    C2f_RFCBAM,
+    SPPFLSKA,
+    )
 __all__ = (
     "Conv",
     "Conv2",
@@ -142,5 +150,8 @@ __all__ = (
     "AID",
     "ChannelAvgPool",
     "ChannelMaxPool",
+    "SPPFLSKA",
+    "RFCBAMConv",
+    "C2f_RFCBAM",
     "SPPFLSKA",
 )

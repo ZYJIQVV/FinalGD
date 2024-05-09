@@ -55,6 +55,9 @@ from gd.nn.modules import (
     ChannelAvgPool,
     ChannelMaxPool,
     SPPFLSKA,
+    RFCBAMConv,
+    C2f_RFCBAM,
+
 )
 from gd.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from gd.utils.checks import check_requirements, check_suffix, check_yaml
@@ -891,6 +894,14 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             DWConvTranspose2d,
             C3x,
             RepC3,
+            LSKA,
+            PCWA,
+            AID,
+            ChannelAvgPool,
+            ChannelMaxPool,
+            SPPFLSKA,
+            RFCBAMConv,
+            C2f_RFCBAM,
         }:
             c1, c2 = ch[f], args[0]
             if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
@@ -958,7 +969,7 @@ def yaml_model_load(path):
         LOGGER.warning(f"WARNING ⚠️ Ultralytics YOLO P6 models now use -p6 suffix. Renaming {path.stem} to {new_stem}.")
         path = path.with_name(new_stem + path.suffix)
 
-    unified_path = re.sub(r"(\d+)([nslmx])(.+)?$", r"\1\3", str(path))  # i.e. yolov8x.yaml -> yolov8.yaml
+    unified_path = re.sub(r"(\d+)([nslmx])(.+)?$", r"\1\3", str(path))  # i.e. yolov8x.yaml -> yolov8x.yaml
     yaml_file = check_yaml(unified_path, hard=False) or check_yaml(path)
     d = yaml_load(yaml_file)  # model dict
     d["scale"] = guess_model_scale(path)
